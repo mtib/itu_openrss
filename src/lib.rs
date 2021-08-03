@@ -1,15 +1,16 @@
 use chrono::NaiveDate;
 use log::trace;
-use scraper::{Html, Node, Selector};
+use scraper::{Html, Selector};
+use tabled::Tabled;
 use tokio::runtime::Runtime;
 
 pub const ITU_WEB: &str = "https://en.itu.dk/about-itu/vacancies";
 
-#[derive(Debug, Clone, Hash)]
+#[derive(Debug, Clone, Hash, Tabled)]
 pub struct Vacancy {
-    title: String,
-    link: String,
-    deadline: NaiveDate,
+    pub deadline: NaiveDate,
+    pub title: String,
+    pub link: String,
 }
 
 #[derive(Debug, Clone)]
